@@ -2,8 +2,8 @@
 
 namespace RenokiCo\LaravelHealthchecks\Test\Http\Controllers;
 
-use RenokiCo\LaravelHealthchecks\Http\Controllers\HealthcheckController;
 use Illuminate\Http\Request;
+use RenokiCo\LaravelHealthchecks\Http\Controllers\HealthcheckController;
 
 class TestOutputController extends HealthcheckController
 {
