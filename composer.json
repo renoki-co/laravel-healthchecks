@@ -1,27 +1,28 @@
 {
-    "name": "renoki-co/:package_name",
-    "description": ":package_description",
-    "keywords": ["laravel", "php"],
+    "name": "renoki-co/laravel-healthchecks",
+    "description": "Laravel Healthchecks is a simple controller class that enables the possibility of building your own healthchecks endpoints without too much issues.",
+    "keywords": ["laravel", "php", "healthcheck", "controller", "server", "checks", "endpoint"],
     "license": "MIT",
-    "homepage": "https://github.com/renoki-co/:package_name",
+    "homepage": "https://github.com/renoki-co/laravel-healthchecks",
     "authors": [
         {
-            "name": ":author_name",
-            "homepage": ":author_link",
+            "name": "Alex Renoki",
+            "homepage": "https://github.com/rennokki",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "laravel/framework": "^6.2|^7.0"
     },
     "autoload": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\": "src/"
+            "RenokiCo\\LaravelHealthchecks\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RenokiCo\\:package_namespace\\Test\\": "tests"
+            "RenokiCo\\LaravelHealthchecks\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -34,5 +35,12 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RenokiCo\\LaravelHealthchecks\\LaravelHealthcheckserviceProvider"
+            ]
+        }
+    }
 }

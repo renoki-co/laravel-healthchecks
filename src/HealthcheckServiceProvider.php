@@ -1,10 +1,10 @@
 <?php
 
-namespace RenokiCo\:package_namespace;
+namespace RenokiCo\LaravelHealthchecks;
 
 use Illuminate\Support\ServiceProvider;
 
-class PackageServiceProvider extends ServiceProvider
+class HealthcheckServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
@@ -13,10 +13,6 @@ class PackageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('config.php'),
-        ]);
-
         //
     }
 

@@ -1,29 +1,116 @@
-Package Name Here
-===================================
+Laravel Healthchecks
+====================
 
-![CI](https://github.com/renoki-co/:package-name/workflows/CI/badge.svg?branch=master)[![codecov](https://codecov.io/gh/renoki-co/:package_name/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/:package_name/branch/master)
-[![StyleCI](https://github.styleci.io/repos/:styleci_code/shield?branch=master)](https://github.styleci.io/repos/:styleci_code)
-[![Latest Stable Version](https://poser.pugx.org/renoki-co/:package_name/v/stable)](https://packagist.org/packages/renoki-co/:package_name)
-[![Total Downloads](https://poser.pugx.org/renoki-co/:package_name/downloads)](https://packagist.org/packages/renoki-co/:package_name)
-[![Monthly Downloads](https://poser.pugx.org/renoki-co/:package_name/d/monthly)](https://packagist.org/packages/renoki-co/:package_name)
-[![License](https://poser.pugx.org/renoki-co/:package_name/license)](https://packagist.org/packages/renoki-co/:package_name)
+![CI](https://github.com/renoki-co/laravel-healthchecks/workflows/CI/badge.svg?branch=master)[![codecov](https://codecov.io/gh/renoki-co/laravel-healthchecks/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-healthchecks/branch/master)
+[![StyleCI](https://github.styleci.io/repos/264111394/shield?branch=master)](https://github.styleci.io/repos/264111394)
+[![Latest Stable Version](https://poser.pugx.org/renoki-co/laravel-healthchecks/v/stable)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
+[![Total Downloads](https://poser.pugx.org/renoki-co/laravel-healthchecks/downloads)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
+[![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-healthchecks/d/monthly)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
+[![License](https://poser.pugx.org/renoki-co/laravel-healthchecks/license)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
 
-**Note:** Replace  ```:package_name``` ```:package_description``` ```:package_namespace``` ```:author_name``` ```:author_link``` ```:styleci_code``` with their correct values in [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+Laravel Healthchecks is a simple controller class that enables the possibility of building your own healthchecks endpoints without too much issues.
 
 ## 🚀 Installation
 
 You can install the package via composer:
 
 ```bash
-composer require renoki-co/:package_name
+composer require renoki-co/laravel-healthchecks
 ```
 
 ## 🙌 Usage
 
+First of all, you should create your own Controller for healthchecks, that extends the `RenokiCo\LaravelHealthchecks\Http\Controllers\HealthcheckController`.
+
 ``` php
-//
+use App\User;
+use Illuminate\Http\Request;
+use RenokiCo\LaravelHealthchecks\Http\Controllers\HealthcheckController;
+
+class MyHealthcheckController extends HealthcheckController
+{
+    /**
+     * Register the healthchecks.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    public function registerHealthchecks(Request $request)
+    {
+        $this->addHealthcheck('mysql', function (Request $request) {
+            // Try testing the MySQL connection here
+            // and return true/false for pass/fail.
+
+            return true;
+        });
+    }
+}
+```
+
+```php
+// In your routes
+Route::get('/healthcheck', 'MyHealthcheckController@handle');
+```
+
+## Registering healthchecks
+
+Within the controller, you should register the healthchecks closures in the `registerHealthchecks` method, like the example stated above.
+
+You can add as many healthchecks as you want.
+
+```php
+public function registerHealthchecks(Request $request)
+{
+    $this->addHealthcheck('mysql', function (Request $request) {
+        //
+    });
+
+    $this->addHealthcheck('redis', function (Request $request) {
+        //
+    });
+
+    $this->addHealthcheck('some_check', function (Request $request) {
+        //
+    });
+
+    $this->addHealthcheck('another_check_here', function (Request $request) {
+        //
+    });
+}
+```
+
+## Status Codes
+
+In case of failure, the response is `500`. For all successful responses, the status code is `200`.
+
+## Outputs
+
+By default, the output will be `OK` or `FAIL` as string, but in case you want to debug the healthchecks, you can get a JSON with each registered healthchecks and their pass/fail closures.
+
+You have to call `withOutput()`:
+
+```php
+public function registerHealthchecks(Request $request)
+{
+    $this->withOutput;
+
+    $this->addHealthcheck('mysql', function (Request $request) {
+        return true;
+    });
+
+    $this->addHealthcheck('redis', function (Request $request) {
+        return false;
+    });
+}
+```
+
+The output in the browser would be like this:
+
+```json
+{
+    "mysql": true,
+    "redis": false
+}
 ```
 
 ## 🐛 Testing
@@ -47,4 +134,4 @@ If you discover any security related issues, please email alex@renoki.org instea
 
 ## 📄 License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
