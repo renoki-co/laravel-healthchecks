@@ -9,7 +9,7 @@ Laravel Healthchecks
 [![Monthly Downloads](https://poser.pugx.org/renoki-co/laravel-healthchecks/d/monthly)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
 [![License](https://poser.pugx.org/renoki-co/laravel-healthchecks/license)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
 
-Laravel Healthchecks is a simple controller class that enables the possibility of building your own healthchecks endpoints without too much issues.
+Laravel Healthchecks is a simple controller class that enables the possibility of building your own healthchecks endpoint without issues.
 
 ## 🚀 Installation
 
