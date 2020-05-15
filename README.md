@@ -87,12 +87,12 @@ In case of failure, the response is `500`. For all successful responses, the sta
 
 By default, the output will be `OK` or `FAIL` as string, but in case you want to debug the healthchecks, you can get a JSON with each registered healthchecks and their pass/fail closures.
 
-You have to call `withOutput()`:
+You have just to call `withOutput()`:
 
 ```php
 public function registerHealthchecks(Request $request)
 {
-    $this->withOutput;
+    $this->withOutput();
 
     $this->addHealthcheck('mysql', function (Request $request) {
         return true;
