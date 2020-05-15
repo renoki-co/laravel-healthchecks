@@ -1,7 +1,8 @@
 Laravel Healthchecks
 ====================
 
-![CI](https://github.com/renoki-co/laravel-healthchecks/workflows/CI/badge.svg?branch=master)[![codecov](https://codecov.io/gh/renoki-co/laravel-healthchecks/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-healthchecks/branch/master)
+![CI](https://github.com/renoki-co/laravel-healthchecks/workflows/CI/badge.svg?branch=master)
+[![codecov](https://codecov.io/gh/renoki-co/laravel-healthchecks/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/laravel-healthchecks/branch/master)
 [![StyleCI](https://github.styleci.io/repos/264111394/shield?branch=master)](https://github.styleci.io/repos/264111394)
 [![Latest Stable Version](https://poser.pugx.org/renoki-co/laravel-healthchecks/v/stable)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
 [![Total Downloads](https://poser.pugx.org/renoki-co/laravel-healthchecks/downloads)](https://packagist.org/packages/renoki-co/laravel-healthchecks)
