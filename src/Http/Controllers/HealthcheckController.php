@@ -32,6 +32,20 @@ class HealthcheckController extends Controller implements Healthcheckable
     protected $withOutput = false;
 
     /**
+     * The HTTP code to send on passing all healthchecks.
+     *
+     * @var int
+     */
+    protected $passingHttpCode = 200;
+
+    /**
+     * The HTTP code to send on failing one of the healthchecks.
+     *
+     * @var int
+     */
+    protected $failingHttpCode = 500;
+
+    /**
      * Add a new closure for the healthchecks.
      *
      * @param  string  $name
@@ -54,6 +68,32 @@ class HealthcheckController extends Controller implements Healthcheckable
     public function withOutput(bool $enabled = true)
     {
         $this->withOutput = true;
+
+        return $this;
+    }
+
+    /**
+     * Set the passing HTTP code.
+     *
+     * @param  int  $code
+     * @return $this
+     */
+    public function setPassingHttpCode(int $code)
+    {
+        $this->passingHttpCode = $code;
+
+        return $this;
+    }
+
+    /**
+     * Set the failing HTTP code.
+     *
+     * @param  int  $code
+     * @return $this
+     */
+    public function setFailingHttpCode(int $code)
+    {
+        $this->failingHttpCode = $code;
 
         return $this;
     }
@@ -120,7 +160,7 @@ class HealthcheckController extends Controller implements Healthcheckable
 
         $healthchecksPassed = $this->healthchecksHavePassed($ranHealthchecks);
 
-        $code = $healthchecksPassed ? 200 : 500;
+        $code = $healthchecksPassed ? $this->passingHttpCode : $this->failingHttpCode;
         $message = $healthchecksPassed ? 'OK' : 'FAIL';
 
         if ($this->withOutput) {
