@@ -84,6 +84,21 @@ public function registerHealthchecks(Request $request)
 
 In case of failure, the response is `500`. For all successful responses, the status code is `200`.
 
+To change the http codes being sent out, specify this in your `registerHealthchecks` method:
+
+```php
+public function registerHealthchecks(Request $request)
+{
+    $this->setPassingHttpCode(203);
+
+    $this->setFailingHttpCode(403);
+
+    $this->addHealthcheck('mysql', function (Request $request) {
+        return true;
+    });
+}
+```
+
 ## Outputs
 
 By default, the output will be `OK` or `FAIL` as string, but in case you want to debug the healthchecks, you can get a JSON with each registered healthchecks and their pass/fail closures.

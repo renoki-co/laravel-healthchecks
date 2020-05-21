@@ -55,4 +55,32 @@ class ControllerTest extends TestCase
             'test3' => false,
         ], $content);
     }
+
+    public function test_successful_healthcheck_with_custom_code()
+    {
+        $request = Request::create('/', 'GET');
+
+        $controller = new Http\Controllers\TestSuccessfulWithCustomCodeController;
+
+        $response = $controller->handle($request);
+
+        $this->assertEquals(
+            204,
+            $response->getStatusCode()
+        );
+    }
+
+    public function test_failing_healthcheck_with_custom_code()
+    {
+        $request = Request::create('/', 'GET');
+
+        $controller = new Http\Controllers\TestFailingWithCustomCodeController;
+
+        $response = $controller->handle($request);
+
+        $this->assertEquals(
+            403,
+            $response->getStatusCode()
+        );
+    }
 }
