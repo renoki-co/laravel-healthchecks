@@ -24,7 +24,6 @@ composer require renoki-co/laravel-healthchecks
 First of all, you should create your own Controller for healthchecks, that extends the `RenokiCo\LaravelHealthchecks\Http\Controllers\HealthcheckController`.
 
 ``` php
-use App\User;
 use Illuminate\Http\Request;
 use RenokiCo\LaravelHealthchecks\Http\Controllers\HealthcheckController;
 
