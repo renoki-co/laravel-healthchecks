@@ -35,12 +35,5 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev",
-    "extra": {
-        "laravel": {
-            "providers": [
-                "RenokiCo\\LaravelHealthchecks\\LaravelHealthcheckserviceProvider"
-            ]
-        }
-    }
+    "minimum-stability": "dev"
 }
