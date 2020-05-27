@@ -52,7 +52,7 @@ class HealthcheckController extends Controller implements Healthcheckable
      * @param  Closure  $callable
      * @return $this
      */
-    public function addHealtcheck(string $name, Closure $callable)
+    public function addHealthcheck(string $name, Closure $callable)
     {
         $this->healthchecks[$name] = $callable;
 
