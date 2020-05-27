@@ -4,7 +4,7 @@ namespace RenokiCo\LaravelHealthchecks;
 
 use Illuminate\Support\ServiceProvider;
 
-class HealthcheckServiceProvider extends ServiceProvider
+class LaravelHealthcheckServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
