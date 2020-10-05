@@ -2,7 +2,7 @@
     "name": "renoki-co/laravel-healthchecks",
     "description": "Laravel Healthchecks is a simple controller class that helps you build your own healthchecks endpoint without issues.",
     "keywords": ["laravel", "php", "healthcheck", "controller", "server", "checks", "endpoint"],
-    "license": "MIT",
+    "license": "Apache-2.0",
     "homepage": "https://github.com/renoki-co/laravel-healthchecks",
     "authors": [
         {
