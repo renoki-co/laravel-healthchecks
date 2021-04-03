@@ -57,7 +57,7 @@ class MyHealthcheckController extends HealthcheckController
 
 ```php
 // In your routes
-Route::get('/healthcheck', 'MyHealthcheckController@handle');
+Route::get('/healthcheck', [MyHealthcheckController::class, 'handle']);
 ```
 
 ## Registering healthchecks
